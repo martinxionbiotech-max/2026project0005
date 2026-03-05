@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bird Personality Test Tool Online | BirdFancier</title>
+  <meta name="description" content="Take BirdFancier's evidence-informed birds personality test tool online. Answer in-depth bird behavior questions, discover personality type, and get practical care guidance." />
+  <meta name="keywords" content="birds personality, bird personality test tool online, bird behavior quiz, bird temperament test, parrot personality, birdfanciers.com" />
+  <link rel="canonical" href="https://www.birdfanciers.com/bird-personality-test" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Bird Personality Test Tool Online" />
+  <meta property="og:description" content="Evidence-informed birds personality assessment with deeper behavior questions, care guidance, and FAQ." />
+  <meta property="og:url" content="https://www.birdfanciers.com/bird-personality-test" />
+  <meta property="og:site_name" content="BirdFancier" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Bird Personality Test Tool Online" />
+  <meta name="twitter:description" content="Choose bird type, answer behavior questions, and get a birds personality profile." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Bird Personality Test Tool Online",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "url": "https://www.birdfanciers.com/bird-personality-test",
+    "description": "A static, evidence-informed birds personality tool that estimates personality traits from observable behavior.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "BirdFancier",
+      "url": "https://www.birdfanciers.com"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is this bird personality test a diagnosis?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. This tool is an educational screening model based on observable behavior patterns. It does not replace veterinary or certified avian behavior consultation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How accurate is this birds personality test?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Accuracy improves when owners score behavior across multiple days, in stable conditions, and compare trends over several weeks rather than relying on one session."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do bird groups have different scoring weights?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Different bird groups show different baseline tendencies in sociality, vocal behavior, and exploration. Weighting helps keep interpretation practical across broad bird categories."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How often should I retest my bird personality?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Retest weekly for 3 to 4 weeks and use the average profile. Re-test again after major routine changes, new environments, or recovery from illness."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #f7f9fc;
+      --card: #ffffff;
+      --text: #16212f;
+      --muted: #526173;
+      --line: #d9e2ec;
+      --brand: #1f7ae0;
+      --brand-dark: #1257a8;
+      --ok: #0f8b60;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .container {
+      width: min(980px, 92vw);
+      margin: 0 auto;
+      padding: 1rem 0 2rem;
+    }
+
+    header { padding: 1.2rem 0 0.6rem; }
+    h1 { font-size: clamp(1.45rem, 2.5vw, 2rem); margin: 0 0 0.5rem; }
+    h2 { font-size: clamp(1.2rem, 2vw, 1.5rem); margin: 0 0 0.5rem; }
+    h3 { margin: 0.4rem 0; }
+
+    .subtitle { color: var(--muted); margin: 0; max-width: 72ch; }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1rem;
+      margin-top: 1rem;
+      box-shadow: 0 3px 18px rgba(2, 22, 52, 0.05);
+    }
+
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; }
+
+    .question { border-top: 1px solid var(--line); padding-top: 0.8rem; margin-top: 0.8rem; }
+    .options { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.5rem; margin-top: 0.45rem; }
+
+    .opt {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      text-align: center;
+      padding: 0.5rem;
+      cursor: pointer;
+      background: #fbfdff;
+      user-select: none;
+      font-size: 0.94rem;
+    }
+
+    .opt input { display: none; }
+    .opt.selected {
+      border-color: var(--brand);
+      background: #eaf3ff;
+      color: #124985;
+      font-weight: 600;
+    }
+
+    select, button {
+      width: 100%;
+      padding: 0.7rem 0.8rem;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      font-size: 1rem;
+      background: #fff;
+    }
+
+    .btn {
+      border: none;
+      background: var(--brand);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+
+    .btn:hover { background: var(--brand-dark); }
+
+    .result {
+      border-left: 5px solid var(--ok);
+      padding: 0.8rem;
+      background: #f1fff9;
+      border-radius: 10px;
+      display: none;
+    }
+
+    .info { color: var(--muted); font-size: 0.92rem; margin-top: 0.4rem; }
+
+    .share { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.8rem; }
+
+    .share a, .share button {
+      width: auto;
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.45rem 0.8rem;
+      background: #fff;
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+
+    .small { color: var(--muted); font-size: 0.9rem; }
+
+    details {
+      border-top: 1px solid var(--line);
+      padding-top: 0.75rem;
+      margin-top: 0.75rem;
+    }
+
+    summary { cursor: pointer; font-weight: 600; }
+
+    footer { margin-top: 1rem; color: var(--muted); font-size: 0.9rem; }
+
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: 1fr; }
+      .options { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .card { border-radius: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Bird Personality Test Tool Online</h1>
+      <p class="subtitle">Estimate your bird's personality using observable habits and evidence-informed behavior dimensions. This birds personality test is a screening-style owner tool, not a veterinary diagnosis.</p>
+    </header>
+
+    <section class="card" aria-labelledby="method-title">
+      <h2 id="method-title">How this birds personality test works (before you start)</h2>
+      <div class="grid">
+        <div>
+          <h3>Method</h3>
+          <ul>
+            <li>Choose your bird's broad species group.</li>
+            <li>Rate 16 behavior items observed over normal daily life.</li>
+            <li>We score five trait dimensions: <strong>Boldness</strong>, <strong>Sociability</strong>, <strong>Exploration</strong>, <strong>Routine Sensitivity</strong>, and <strong>Vocal Expressiveness</strong>.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Scientific basis</h3>
+          <p class="small">Question design follows common animal personality axes used in avian behavior research, especially bold-shy, exploration, social tendency, and stress reactivity patterns. See references below for sources.</p>
+          <p class="small"><strong>Important:</strong> score over several days and avoid testing during acute stress (transport, illness, new predators, relocation).</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="quiz-title">
+      <h2 id="quiz-title">Start your test</h2>
+
+      <label for="birdType"><strong>1) Select bird group</strong></label>
+      <select id="birdType" aria-label="Bird group">
+        <option value="parrot">Parrots & Parakeets</option>
+        <option value="songbird">Finches, Canaries & Songbirds</option>
+        <option value="pigeon">Pigeons & Doves</option>
+        <option value="waterfowl">Ducks, Geese & Waterfowl</option>
+        <option value="other">Other Companion or Aviary Birds</option>
+      </select>
+      <p class="info"><strong>2) Answer all questions:</strong> 16 items, click one option per item.</p>
+
+      <div id="questions"></div>
+
+      <div style="margin-top: 0.9rem; display:flex; gap:0.6rem; flex-wrap:wrap;">
+        <button class="btn" id="calcBtn">Calculate personality</button>
+        <button id="resetBtn" type="button">Reset</button>
+      </div>
+
+      <div class="result" id="result" aria-live="polite"></div>
+
+      <div class="share" id="share" style="display:none;">
+        <a id="shareX" target="_blank" rel="noopener">Share on X</a>
+        <a id="shareFb" target="_blank" rel="noopener">Share on Facebook</a>
+        <a id="shareLi" target="_blank" rel="noopener">Share on LinkedIn</a>
+        <a id="shareWa" target="_blank" rel="noopener">Share on WhatsApp</a>
+        <a id="shareMail">Share by Email</a>
+        <button id="copyBtn" type="button">Copy result link text</button>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="care-title">
+      <h2 id="care-title">Birds personality care guide: practical feeding & enrichment notes</h2>
+      <div class="grid small">
+        <div>
+          <h3>The Explorer</h3>
+          <ul>
+            <li>Rotate enrichment 2-3 times weekly to prevent boredom.</li>
+            <li>Use puzzle feeding and supervised novelty zones.</li>
+            <li>Offer safe climbing and varied perch textures.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>The Social Connector</h3>
+          <ul>
+            <li>Schedule social sessions at fixed times daily.</li>
+            <li>Use cooperative training and calm call-response drills.</li>
+            <li>Avoid prolonged isolation; add visual/auditory flock cues.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>The Stability Seeker</h3>
+          <ul>
+            <li>Keep feeding and lights routines highly consistent.</li>
+            <li>Introduce changes gradually using tiny step transitions.</li>
+            <li>Provide one predictable "safe perch" location.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>The Expressive Communicator</h3>
+          <ul>
+            <li>Reinforce calm vocal intervals, not only loud output.</li>
+            <li>Pair voice cues with target-training and stationing.</li>
+            <li>Check noise triggers (mirrors, outdoor stimuli, schedule gaps).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="faq-title">
+      <h2 id="faq-title">FAQ: birds personality test tool online</h2>
+      <details>
+        <summary>Is this bird personality test a diagnosis?</summary>
+        <p class="small">No. It is an educational screening framework. If your bird shows persistent fear, aggression, self-harm, or appetite changes, consult an avian veterinarian and a qualified behavior professional.</p>
+      </details>
+      <details>
+        <summary>How can I improve result reliability?</summary>
+        <p class="small">Score behaviors in normal conditions, at similar times of day, for multiple sessions. Weekly retesting over 3-4 weeks gives stronger trend reliability than one-time scoring.</p>
+      </details>
+      <details>
+        <summary>Can personality change over time?</summary>
+        <p class="small">Yes. Age, hormones, social environment, health status, and enrichment quality can shift behavior expression. Track trends instead of treating one score as permanent.</p>
+      </details>
+      <details>
+        <summary>Why is birds personality important for care planning?</summary>
+        <p class="small">Personality-aware care helps match enrichment type, social schedule, and transition pace to individual needs, reducing stress and improving welfare outcomes.</p>
+      </details>
+    </section>
+
+    <section class="card" aria-labelledby="authority-title">
+      <h2 id="authority-title">Authority & references</h2>
+      <p class="small">This tool translates behavioral science into a practical owner-friendly checklist for home observations and expert communication.</p>
+      <ol class="small">
+        <li>Gosling, S. D. (2001). From mice to men: What can we learn about personality from animal research? <em>Psychological Bulletin</em>, 127(1), 45-86.</li>
+        <li>Réale, D., Reader, S. M., Sol, D., McDougall, P. T., & Dingemanse, N. J. (2007). Integrating animal temperament within ecology and evolution. <em>Biological Reviews</em>, 82(2), 291-318.</li>
+        <li>Carere, C., & Maestripieri, D. (Eds.). (2013). <em>Animal Personalities: Behavior, Physiology, and Evolution</em>. University of Chicago Press.</li>
+        <li>Dingemanse, N. J., Both, C., Drent, P. J., & Tinbergen, J. M. (2004). Fitness consequences of avian personalities in a fluctuating environment. <em>Proceedings of the Royal Society B</em>, 271(1541), 847-852.</li>
+        <li>Forkman, B., Boissy, A., Meunier-Salaün, M. C., Canali, E., & Jones, R. B. (2007). A critical review of fear tests used on birds and mammals. <em>Physiology & Behavior</em>, 92(3), 340-374.</li>
+      </ol>
+    </section>
+
+    <footer>
+      © 2026 BirdFancier · Domain: <strong>birdfanciers.com</strong> · For educational use only.
+    </footer>
+  </main>
+
+  <script>
+    const QUESTIONS = [
+      { id: 'q1', text: 'Approaches a new toy/object within 5 minutes.', trait: 'exploration' },
+      { id: 'q2', text: 'Remains calm when familiar people move nearby.', trait: 'boldness' },
+      { id: 'q3', text: 'Seeks interaction (calls, comes closer, follows).', trait: 'sociability' },
+      { id: 'q4', text: 'Shows distress when feeding/play routine changes.', trait: 'routine' },
+      { id: 'q5', text: 'Uses varied vocalizations during daily activity.', trait: 'vocal' },
+      { id: 'q6', text: 'Recovers quickly after sudden harmless noises.', trait: 'boldness' },
+      { id: 'q7', text: 'Investigates new perches/space levels voluntarily.', trait: 'exploration' },
+      { id: 'q8', text: 'Prefers flock/company over being isolated.', trait: 'sociability' },
+      { id: 'q9', text: 'Accepts gentle handling or close approach without panic.', trait: 'boldness' },
+      { id: 'q10', text: 'Returns to play/feeding quickly after a brief interruption.', trait: 'routine' },
+      { id: 'q11', text: 'Explores food variety (new safe vegetables/seeds) willingly.', trait: 'exploration' },
+      { id: 'q12', text: 'Shows coordinated response to social cues from humans/birds.', trait: 'sociability' },
+      { id: 'q13', text: 'Shows startle behavior when environment changes suddenly.', trait: 'routine' },
+      { id: 'q14', text: 'Uses contact calls to maintain social connection.', trait: 'vocal' },
+      { id: 'q15', text: 'Initiates independent activity without external prompting.', trait: 'exploration' },
+      { id: 'q16', text: 'Keeps calm posture in mildly novel but safe settings.', trait: 'boldness' }
+    ];
+
+    const WEIGHTS = {
+      parrot: { boldness: 1.1, exploration: 1.15, sociability: 1.1, routine: 1.0, vocal: 1.2 },
+      songbird: { boldness: 1.0, exploration: 1.0, sociability: 1.05, routine: 1.1, vocal: 1.15 },
+      pigeon: { boldness: 1.05, exploration: 1.0, sociability: 1.15, routine: 1.0, vocal: 0.9 },
+      waterfowl: { boldness: 1.0, exploration: 1.05, sociability: 1.15, routine: 1.0, vocal: 1.0 },
+      other: { boldness: 1.0, exploration: 1.0, sociability: 1.0, routine: 1.0, vocal: 1.0 }
+    };
+
+    const OPTIONS = [
+      { label: 'Rarely', value: 1 },
+      { label: 'Sometimes', value: 2 },
+      { label: 'Often', value: 3 },
+      { label: 'Almost Always', value: 4 }
+    ];
+
+    const PROFILE_CARE = {
+      'The Explorer': 'Care focus: frequent novelty rotation, climbing challenges, and supervised discovery time.',
+      'The Social Connector': 'Care focus: structured social sessions, cooperative training, and predictable flock interaction windows.',
+      'The Stability Seeker': 'Care focus: routine consistency, gradual transitions, and low-surprise enrichment sequencing.',
+      'The Expressive Communicator': 'Care focus: proactive vocal management, cue-based communication, and reinforcement of quiet behavior.',
+      'The Balanced Adapter': 'Care focus: mixed enrichment plan balancing social time, novelty, and stable routine anchors.'
+    };
+
+    const questionsEl = document.getElementById('questions');
+    const resultEl = document.getElementById('result');
+    const shareEl = document.getElementById('share');
+
+    function renderQuestions() {
+      questionsEl.innerHTML = '';
+      QUESTIONS.forEach((q, idx) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'question';
+        wrapper.innerHTML = `<p><strong>${idx + 1}. ${q.text}</strong></p>`;
+
+        const options = document.createElement('div');
+        options.className = 'options';
+
+        OPTIONS.forEach((opt, i) => {
+          const label = document.createElement('label');
+          label.className = 'opt';
+          label.innerHTML = `<input type="radio" name="${q.id}" value="${opt.value}" ${i === 1 ? 'checked' : ''}>${opt.label}`;
+          label.addEventListener('click', () => {
+            [...options.children].forEach(n => n.classList.remove('selected'));
+            label.classList.add('selected');
+          });
+          if (i === 1) label.classList.add('selected');
+          options.appendChild(label);
+        });
+
+        wrapper.appendChild(options);
+        questionsEl.appendChild(wrapper);
+      });
+    }
+
+    function classify(traits) {
+      const sorted = Object.entries(traits).sort((a, b) => b[1] - a[1]);
+      const top = sorted[0][0];
+      const second = sorted[1][0];
+
+      if ((top === 'exploration' || top === 'boldness') && second !== 'routine') {
+        return {
+          type: 'The Explorer',
+          notes: 'Curious and novelty-seeking. Usually benefits from puzzle foraging, rotating environments, and guided exploration.'
+        };
+      }
+      if (top === 'sociability') {
+        return {
+          type: 'The Social Connector',
+          notes: 'Relationship-driven and flock-oriented. Typically thrives on predictable social interaction and engagement routines.'
+        };
+      }
+      if (top === 'routine') {
+        return {
+          type: 'The Stability Seeker',
+          notes: 'More sensitive to change and transitions. Usually does best with consistency, gradual adjustment, and clear anchors.'
+        };
+      }
+      if (top === 'vocal') {
+        return {
+          type: 'The Expressive Communicator',
+          notes: 'Communicates frequently with calls and body language. Benefits from structured communication and calm-response training.'
+        };
+      }
+      return {
+        type: 'The Balanced Adapter',
+        notes: 'Moderate and flexible across dimensions. Often adapts well with balanced enrichment and social exposure.'
+      };
+    }
+
+    function calculate() {
+      const birdType = document.getElementById('birdType').value;
+      const traitScores = { boldness: 0, sociability: 0, exploration: 0, routine: 0, vocal: 0 };
+
+      QUESTIONS.forEach(q => {
+        const selected = document.querySelector(`input[name="${q.id}"]:checked`);
+        const val = selected ? Number(selected.value) : 2;
+        traitScores[q.trait] += val;
+      });
+
+      const weighted = {};
+      Object.keys(traitScores).forEach(t => {
+        weighted[t] = Number((traitScores[t] * WEIGHTS[birdType][t]).toFixed(2));
+      });
+
+      const profile = classify(weighted);
+      const scoreText = Object.entries(weighted)
+        .map(([k, v]) => `${k}: ${v}`)
+        .join(' | ');
+
+      const careText = PROFILE_CARE[profile.type] || PROFILE_CARE['The Balanced Adapter'];
+      const summary = `My birds personality profile: ${profile.type}. (${scoreText})`;
+
+      resultEl.style.display = 'block';
+      resultEl.innerHTML = `<h3>${profile.type}</h3><p>${profile.notes}</p><p><strong>Trait scores:</strong> ${scoreText}</p><p><strong>Care note:</strong> ${careText}</p><p class="small">Tip: Repeat this birds personality test weekly for 3-4 weeks and compare average trends.</p>`;
+      setupSharing(summary);
+    }
+
+    function setupSharing(summary) {
+      const page = 'https://www.birdfanciers.com/bird-personality-test';
+      const text = encodeURIComponent(`${summary} · via BirdFancier`);
+      shareEl.style.display = 'flex';
+      document.getElementById('shareX').href = `https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent(page)}`;
+      document.getElementById('shareFb').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(page)}`;
+      document.getElementById('shareLi').href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(page)}`;
+      document.getElementById('shareWa').href = `https://wa.me/?text=${text}%20${encodeURIComponent(page)}`;
+      document.getElementById('shareMail').href = `mailto:?subject=Bird Personality Test Result&body=${text}%0A${encodeURIComponent(page)}`;
+      document.getElementById('copyBtn').onclick = async () => {
+        const payload = `${decodeURIComponent(text)}\n${page}`;
+        try {
+          await navigator.clipboard.writeText(payload);
+          document.getElementById('copyBtn').textContent = 'Copied!';
+          setTimeout(() => document.getElementById('copyBtn').textContent = 'Copy result link text', 1400);
+        } catch {
+          alert('Clipboard unavailable on this browser.');
+        }
+      };
+    }
+
+    document.getElementById('calcBtn').addEventListener('click', calculate);
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      renderQuestions();
+      resultEl.style.display = 'none';
+      shareEl.style.display = 'none';
+    });
+
+    renderQuestions();
+  </script>
+</body>
+</html>
