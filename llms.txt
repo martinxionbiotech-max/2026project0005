@@ -1,0 +1,9 @@
+# Bird Personality Test
+> Free online bird personality assessment based on avian behavior science with 16 questions, 5 trait dimensions, and personalized care recommendations.
+## Pages
+- [Home](https://birdfanciers.com/): Bird Personality Test Tool Online – take the quiz and get your bird personality profile
+## Statistics
+- 1 page, interactive quiz with 16 behavior items and weighted trait scoring
+## Schema Types
+- WebApplication
+- FAQPage
